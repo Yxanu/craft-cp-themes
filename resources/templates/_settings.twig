@@ -1,0 +1,44 @@
+{# @var settings \Local\CpThemes\Settings #}
+
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.selectField({
+    label: 'Theme'|t('cp-themes'),
+    instructions: 'Choose a built-in Control Panel theme.'|t('cp-themes'),
+    id: 'theme',
+    name: 'theme',
+    options: themeOptions,
+    value: old('theme', settings.theme),
+    errors: settings.errors().get('theme'),
+}) }}
+
+{{ forms.textField({
+    label: 'CSS File(s)'|t('cp-themes'),
+    instructions: 'Enter paths or URLs to CSS files. Separate multiple files with commas. Environment variables and aliases are supported.'|t('cp-themes'),
+    id: 'cssFile',
+    name: 'cssFile',
+    value: old('cssFile', settings.cssFile),
+    errors: settings.errors().get('cssFile'),
+}) }}
+
+{{ forms.textareaField({
+    label: 'Additional CSS'|t('cp-themes'),
+    instructions: 'Enter additional CSS to inject after the selected theme and CSS file(s).'|t('cp-themes'),
+    id: 'additionalCss',
+    name: 'additionalCss',
+    value: old('additionalCss', settings.additionalCss),
+    rows: 15,
+    class: 'code ltr',
+    errors: settings.errors().get('additionalCss'),
+}) }}
+
+{% set cacheBusting = old('cacheBusting', settings.cacheBusting ? '1' : '') %}
+
+{{ forms.lightswitchField({
+    label: 'Cache busting'|t('cp-themes'),
+    instructions: 'Append a content hash to CSS file URLs when the file contents can be read.'|t('cp-themes'),
+    id: 'cacheBusting',
+    name: 'cacheBusting',
+    on: cacheBusting == '1',
+    errors: settings.errors().get('cacheBusting'),
+}) }}

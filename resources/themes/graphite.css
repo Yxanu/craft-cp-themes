@@ -1,0 +1,22 @@
+:root {
+  --cp-themes-accent: #3f4856;
+}
+
+body {
+  background: #eef1f4;
+}
+
+#global-sidebar,
+#main-container #main #header {
+  background: #232832;
+}
+
+#global-sidebar a,
+#main-container #main #header,
+#main-container #main #header h1 {
+  color: #f6f8fb;
+}
+
+a {
+  color: var(--cp-themes-accent);
+}

@@ -1,0 +1,27 @@
+:root {
+  --cp-themes-accent: #000;
+}
+
+body {
+  background: #fff;
+  color: #000;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  color: #000;
+}
+
+#global-sidebar,
+#main-container #main #header {
+  background: #000;
+}
+
+#global-sidebar a,
+#main-container #main #header,
+#main-container #main #header h1 {
+  color: #fff;
+}
