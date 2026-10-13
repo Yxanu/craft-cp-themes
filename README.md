@@ -5,7 +5,7 @@ Control panel themes and custom CSS for Craft CMS 6.
 ## Requirements
 
 - PHP `^8.5`
-- Craft CMS `^6.0.0`
+- Craft CMS `^6.0.0-alpha.20`
 
 ## Installation in the Local Craft Harness
 
@@ -32,4 +32,6 @@ CSS is registered in this order:
 
 ## Craft 6 Alpha Notes
 
-Craft `6.0.0-alpha.16` loads plugins through Craft plugin metadata, not by declaring the plugin class in `extra.laravel.providers`. Keep the plugin class in `extra.class` only.
+Tested with Craft `6.0.0-alpha.20`. Craft loads the plugin through `extra.class`, not `extra.laravel.providers`. Settings use the native `createSettings()` factory and `settingsForm()` API introduced during the Craft 6 alpha cycle.
+
+Craft 6 is still in development, and later alpha releases may require compatibility updates.
