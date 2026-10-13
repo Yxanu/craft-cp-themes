@@ -2,6 +2,13 @@
 
 namespace Local\CpThemes;
 
+use CraftCms\Cms\Form\Controls\Choice;
+use CraftCms\Cms\Form\Controls\Lightswitch;
+use CraftCms\Cms\Form\Controls\Text;
+use CraftCms\Cms\Form\Controls\Textarea;
+use CraftCms\Cms\Form\Form;
+use CraftCms\Cms\Form\FormContext;
+use CraftCms\Cms\Form\Nodes\Field;
 use CraftCms\Cms\Plugin\Plugin;
 use CraftCms\Cms\Support\Env;
 use CraftCms\Cms\Support\Facades\HtmlStack;
@@ -9,8 +16,6 @@ use CraftCms\Cms\Support\Url;
 use CraftCms\Cms\Twig\Events\PageStarting;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
-
-use function CraftCms\Cms\template;
 
 class CpThemes extends Plugin
 {
@@ -34,16 +39,18 @@ class CpThemes extends Plugin
         });
     }
 
-    protected function createSettingsModel(): Settings
+    protected static function createSettings(): Settings
     {
         return new Settings;
     }
 
-    protected function settingsHtml(): ?string
+    public function settingsForm(FormContext $context = new FormContext): ?Form
     {
-        return template('cp-themes/_settings.twig', [
-            'settings' => $this->getSettings(),
-            'themeOptions' => Settings::themeOptions(),
+        return Form::make([
+            Field::make('Theme', Choice::make('theme')->options(Settings::themeOptions())->withoutPlaceholder()),
+            Field::make('CSS File(s)', Text::make('cssFile')),
+            Field::make('Additional CSS', Textarea::make('additionalCss')->rows(12)->monospace()),
+            Field::make('Cache busting', Lightswitch::make('cacheBusting')),
         ]);
     }
 

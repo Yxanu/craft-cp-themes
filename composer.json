@@ -3,11 +3,10 @@
     "name": "yxanu/craft-cp-themes",
     "description": "Control Panel CSS themes and custom CSS for Craft CMS 6.",
     "type": "craft-plugin",
-    "version": "0.1.0",
     "license": "proprietary",
     "require": {
         "php": "^8.5",
-        "craftcms/cms": "^6.0.0"
+        "craftcms/cms": "^6.0.0-alpha.20"
     },
     "autoload": {
         "psr-4": {
